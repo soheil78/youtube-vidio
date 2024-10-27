@@ -1,5 +1,10 @@
-```python
 from googleapiclient.discovery import build
+try:
+    from youtube_transcript_api import YouTubeTranscriptApi
+except ModuleNotFoundError:
+    print("Module 'youtube_transcript_api' not found. Please install it using: pip install youtube-transcript-api")
+    exit()
+import pandas as pd
 
 class YouTubeScraper:
     def __init__(self, api_key):
@@ -30,124 +35,55 @@ class YouTubeScraper:
 
         return videos
 
+    def get_transcript(self, video_id):
+        """استخراج متن گفتاری از ویدیو با استفاده از YouTube Transcript API."""
+        try:
+            transcript_list = YouTubeTranscriptApi.get_transcript(video_id, languages=['en'])
+            transcript_text = " ".join([entry['text'] for entry in transcript_list])
+            return transcript_text
+        except Exception as e:
+            return f"خطا در استخراج متن: {e}"
+
 # استفاده از کلاس:
-api_key = 'AIzaSyARvq-gK0G2bmA2DOIRvf9jny_Zt05Pcn0'  # جایگزین با API Key دریافتی از Google Cloud Console
-scraper = YouTubeScraper(api_key)
+if __name__ == "__main__":
+    api_key = 'AIzaSyARvq-gK0G2bmA2DOIRvf9jny_Zt05Pcn0'  # جایگزین با API Key دریافتی از Google Cloud Console
+    scraper = YouTubeScraper(api_key)
 
-# جستجوی ویدیوهای آموزشی مرتبط با "Python tutorials"
-videos = scraper.search_videos('Python tutorials', max_results=5)
+    # جستجوی ویدیوهای آموزشی مرتبط با "Python tutorials"
+    videos = scraper.search_videos('Python tutorials', max_results=5)
 
-# نمایش ویدیوهای استخراج شده
-if videos:
-    for video in videos:
-        print(f"Title: {video['title']}")
-        print(f"Description: {video['description']}")
-        print(f"Channel: {video['channel_title']}")
-        print(f"Published at: {video['publish_time']}")
-        print(f"Video URL: {video['video_url']}")
-        print('-' * 50)
-else:
-    print("No videos found.")
+    # نمایش ویدیوهای استخراج شده و تبدیل به متن گفتاری
+    if videos:
+        video_results = []
 
-import pandas as pd
+        for video in videos:
+            print(f"Processing video: {video['title']}")
 
-# داده‌های مورد نظر برای ورود به اکسل
-data = [
-    {
-        'Title': 'Python for Beginners - Learn Python in 1 Hour',
-        'Description': 'Learn Python basics in 1 hour! ⚡ This beginner-friendly tutorial will get you coding fast. Want to dive deeper? Check out my ...',
-        'Channel': 'Programming with Mosh',
-        'Published at': '2020-09-16T13:00:20Z',
-        'Video URL': 'https://www.youtube.com/watch?v=kqtD5dpn9C8'
-    },
-    {
-        'Title': 'Python Tutorial - Python Full Course for Beginners',
-        'Description': 'Become a Python pro! This comprehensive tutorial takes you from beginner to hero, covering the basics, machine learning, and ...',
-        'Channel': 'Programming with Mosh',
-        'Published at': '2019-02-18T15:00:08Z',
-        'Video URL': 'https://www.youtube.com/watch?v=_uQrJ0TkZlc'
-    },
-    {
-        'Title': 'Python Tutorial for Beginners (with mini-projects)',
-        'Description': 'Learn Python programming in this complete course for beginners. This tutorial features mini-projects throughout so you can put ...',
-        'Channel': 'freeCodeCamp.org',
-        'Published at': '2023-09-19T14:33:56Z',
-        'Video URL': 'https://www.youtube.com/watch?v=qwAFL1597eM'
-    },
-    {
-        'Title': 'Learn Python in Less than 10 Minutes for Beginners (Fast & Easy)',
-        'Description': "In this crash course I'll be teaching you the basics of Python in less than 10 minutes. Python is super easy to learn compared to ...",
-        'Channel': 'Indently',
-        'Published at': '2021-05-26T12:32:40Z',
-        'Video URL': 'https://www.youtube.com/watch?v=fWjsdhR3z3c'
-    },
-    {
-        'Title': 'Python Tutorial for Beginners - Learn Python in 5 Hours [FULL COURSE]',
-        'Description': "Python Tutorial for Beginners | Full Python Course | Learn Python in 2023 The Ultimate IT Beginner's Course: ...",
-        'Channel': 'TechWorld with Nana',
-        'Published at': '2021-03-05T14:10:17Z',
-        'Video URL': 'https://www.youtube.com/watch?v=t8pPdKYpowI'
-    }
-]
+            # استخراج متن گفتاری از ویدیو با استفاده از YouTube Transcript API
+            transcript = scraper.get_transcript(video['video_id'])
 
-# ایجاد یک DataFrame از داده‌ها
-df = pd.DataFrame(data)
+            # اضافه کردن متن به ویدیو
+            video['transcript'] = transcript
+            video_results.append(video)
 
-# ذخیره DataFrame به فایل اکسل
-df.to_excel('youtube_videos.xlsx', index=False)
+        # ایجاد یک DataFrame از داده‌ها
+        df = pd.DataFrame(video_results)
 
-print("Data has been successfully saved to 'youtube_videos.xlsx'")
+        # ذخیره DataFrame به فایل اکسل
+        df.to_excel('youtube_videos_with_speech_text.xlsx', index=False)
 
-```
+        # چاپ اطلاعات ویدیوها به فرمت مشخص شده
+        print("Data has been successfully saved to 'youtube_videos_with_speech_text.xlsx'")
+        print("\nVideos Output:")
+        print("--------------------------------------------------")
 
-    Title: Python for Beginners - Learn Python in 1 Hour
-    Description: Learn Python basics in 1 hour! ⚡ This beginner-friendly tutorial will get you coding fast. Want to dive deeper? Check out my ...
-    Channel: Programming with Mosh
-    Published at: 2020-09-16T13:00:20Z
-    Video URL: https://www.youtube.com/watch?v=kqtD5dpn9C8
-    --------------------------------------------------
-    Title: Python Tutorial - Python Full Course for Beginners
-    Description: Become a Python pro! This comprehensive tutorial takes you from beginner to hero, covering the basics, machine learning, and ...
-    Channel: Programming with Mosh
-    Published at: 2019-02-18T15:00:08Z
-    Video URL: https://www.youtube.com/watch?v=_uQrJ0TkZlc
-    --------------------------------------------------
-    Title: Python Tutorial for Beginners (with mini-projects)
-    Description: Learn Python programming in this complete course for beginners. This tutorial features mini-projects throughout so you can put ...
-    Channel: freeCodeCamp.org
-    Published at: 2023-09-19T14:33:56Z
-    Video URL: https://www.youtube.com/watch?v=qwAFL1597eM
-    --------------------------------------------------
-    Title: Learn Python in Less than 10 Minutes for Beginners (Fast &amp; Easy)
-    Description: In this crash course I'll be teaching you the basics of Python in less than 10 minutes. Python is super easy to learn compared to ...
-    Channel: Indently
-    Published at: 2021-05-26T12:32:40Z
-    Video URL: https://www.youtube.com/watch?v=fWjsdhR3z3c
-    --------------------------------------------------
-    Title: Python Tutorial for Beginners - Learn Python in 5 Hours [FULL COURSE]
-    Description: Python Tutorial for Beginners | Full Python Course | Learn Python in 2023 The Ultimate IT Beginner's Course: ...
-    Channel: TechWorld with Nana
-    Published at: 2021-03-05T14:10:17Z
-    Video URL: https://www.youtube.com/watch?v=t8pPdKYpowI
-    --------------------------------------------------
-    Data has been successfully saved to 'youtube_videos.xlsx'
-    
-
-
-```python
-jupyter nbconvert --to markdown Untitled21.ipynb
-
-```
-
-
-      Cell In[8], line 1
-        jupyter nbconvert --to markdown Untitled21.ipynb
-                ^
-    SyntaxError: invalid syntax
-    
-
-
-
-```python
-
-```
+        for video in video_results:
+            print(f"Title: {video['title']}")
+            print(f"Description: {video['description']}")
+            print(f"Channel: {video['channel_title']}")
+            print(f"Published at: {video['publish_time']}")
+            print(f"Video URL: {video['video_url']}")
+            print(f"Transcript: {video['transcript'][:300]}...")  # نمایش بخشی از متن برای جلوگیری از طولانی شدن خروجی
+            print('-' * 50)
+    else:
+        print("No videos found.")
