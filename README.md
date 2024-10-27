@@ -87,3 +87,75 @@ if __name__ == "__main__":
             print('-' * 50)
     else:
         print("No videos found.")
+------------------------------------------------------------------------------------------------------------------------------------------
+answer
+-----------------------------------------------------------------------------------------------------------------------------------------
+Processing video: Python for Beginners - Learn Python in 1 Hour
+Processing video: Python Tutorial - Python Full Course for Beginners
+Processing video: Python Tutorial for Beginners (with mini-projects)
+Processing video: Python Tutorial for Beginners - Learn Python in 5 Hours [FULL COURSE]
+Processing video: Learn Python in Less than 10 Minutes for Beginners (Fast &amp; Easy)
+Data has been successfully saved to 'youtube_videos_with_speech_text.xlsx'
+
+Videos Output:
+--------------------------------------------------
+Title: Python for Beginners - Learn Python in 1 Hour
+Description: Learn Python basics in 1 hour! ⚡ Get 6 months of PyCharm FREE with the coupon in the description! Want to dive deeper?
+Channel: Programming with Mosh
+Published at: 2020-09-16T13:00:20Z
+Video URL: https://www.youtube.com/watch?v=kqtD5dpn9C8
+Transcript: خطا در استخراج متن: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=kqtD5dpn9C8! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievabl...
+--------------------------------------------------
+Title: Python Tutorial - Python Full Course for Beginners
+Description: Learn Python for machine learning and web development! Get 6 months of PyCharm FREE with the coupon in the description!
+Channel: Programming with Mosh
+Published at: 2019-02-18T15:00:08Z
+Video URL: https://www.youtube.com/watch?v=_uQrJ0TkZlc
+Transcript: خطا در استخراج متن: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=_uQrJ0TkZlc! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievabl...
+--------------------------------------------------
+Title: Python Tutorial for Beginners (with mini-projects)
+Description: Learn Python programming in this complete course for beginners. This tutorial features mini-projects throughout so you can put ...
+Channel: freeCodeCamp.org
+Published at: 2023-09-19T14:33:56Z
+Video URL: https://www.youtube.com/watch?v=qwAFL1597eM
+Transcript: خطا در استخراج متن: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=qwAFL1597eM! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievabl...
+--------------------------------------------------
+Title: Python Tutorial for Beginners - Learn Python in 5 Hours [FULL COURSE]
+Description: Python Tutorial for Beginners | Full Python Course | Learn Python in 2023 The Ultimate IT Beginner's Course: ...
+Channel: TechWorld with Nana
+Published at: 2021-03-05T14:10:17Z
+Video URL: https://www.youtube.com/watch?v=t8pPdKYpowI
+Transcript: خطا در استخراج متن: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=t8pPdKYpowI! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievabl...
+--------------------------------------------------
+Title: Learn Python in Less than 10 Minutes for Beginners (Fast &amp; Easy)
+Description: In this crash course I'll be teaching you the basics of Python in less than 10 minutes. Python is super easy to learn compared to ...
+Channel: Indently
+Published at: 2021-05-26T12:32:40Z
+Video URL: https://www.youtube.com/watch?v=fWjsdhR3z3c
+Transcript: خطا در استخراج متن: 
+Could not retrieve a transcript for the video https://www.youtube.com/watch?v=fWjsdhR3z3c! This is most likely caused by:
+
+Subtitles are disabled for this video
+
+If you are sure that the described cause is not responsible for this error and that a transcript should be retrievabl...
+--------------------------------------------------
