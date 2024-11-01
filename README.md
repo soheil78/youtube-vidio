@@ -5,32 +5,128 @@
 
 ## Table of Contents
 
-<table>
-  <tr>
-    <td style="vertical-align: top;">
-      <ul>
-        <li><a href="#elbm-coclust-and-selbm-coclust">ELBMcoclust and SELBMcoclust</a></li>
-        <li><a href="#datasets">Datasets</a></li>
-        <li><a href="#Implement">Implement</a></li>
-        <li><a href="#visualization">Visualization</a></li>
-        <li><a href="#word-cloud-of-poissonselbm-for-classic3">Word Cloud of PoissonSELBM for Classic3</a></li>
-	<li><a href="#contributions">Contributions</a></li>
-        <li><a href="#highlights">Highlights</a></li>
-        <li><a href="#supplementary-materials">Supplementary Materials</a></li>
-        <li><a href="#data-availability">Data Availability</a></li>
-	<li><a href="#cite">Cite</a></li>
-        <li><a href="#references">References</a></li>
-      </ul>
-    </td>
-    <td>
-      <img src="https://github.com/Saeidhoseinipour/ELBMcoclust/blob/main/Images/WC_classic3_three_color_3_3.svg" alt="Saeid Hoseinipour" style="width:250px; box-shadow: 5px 5px 15px rgba(0,0,0,0.3); transform: rotateY(10deg);">
-    </td>
-    <td>
-      <img src="https://github.com/Saeidhoseinipour/ELBMcoclust/blob/main/Images/bar_chart_words_classic3_V4_3_3.svg" alt="Saeid Hoseinipour" style="width:200px; box-shadow: 5px 5px 15px rgba(0,0,0,0.3); transform: rotateY(-10deg);">
-    </td>
-  </tr>
-</table>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: system-ui, -apple-system, sans-serif;
+}
 
+.toc-grid {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 30px;
+    align-items: start;
+}
+
+.toc-section {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.toc-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toc-list li {
+    margin-bottom: 12px;
+}
+
+.toc-list a {
+    color: #2c3e50;
+    text-decoration: none;
+    display: block;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.toc-list a:hover {
+    background: #e9ecef;
+    padding-left: 15px;
+}
+
+.image-container {
+    perspective: 1000px;
+}
+
+.image-placeholder {
+    width: 250px;
+    height: 300px;
+    background: #f0f0f0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotateY(10deg);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #1a365d;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.section-header {
+    font-weight: bold;
+    color: #2d3748;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>YouTube Video Scraping Project</h1>
+    
+    <div class="toc-grid">
+        <div class="toc-section">
+            <div class="section-header">Table of Contents</div>
+            <ul class="toc-list">
+                <li><a href="#setup">1. Project Setup & Dependencies</a></li>
+                <li><a href="#authentication">2. YouTube API Authentication</a></li>
+                <li><a href="#scraping">3. Video Scraping Implementation</a></li>
+                <li><a href="#data-processing">4. Data Processing & Storage</a></li>
+                <li><a href="#analysis">5. Data Analysis & Metrics</a></li>
+                <li><a href="#visualization">6. Data Visualization</a></li>
+                <li><a href="#advanced">7. Advanced Features</a>
+                    <ul>
+                        <li><a href="#comments">7.1 Comment Analysis</a></li>
+                        <li><a href="#trends">7.2 Trend Detection</a></li>
+                        <li><a href="#recommendations">7.3 Recommendation Engine</a></li>
+                    </ul>
+                </li>
+                <li><a href="#optimization">8. Performance Optimization</a></li>
+                <li><a href="#documentation">9. Documentation</a></li>
+                <li><a href="#testing">10. Testing & Quality Assurance</a></li>
+            </ul>
+        </div>
+        
+        <div class="image-container">
+            <div class="image-placeholder">
+                <img src="/api/placeholder/250/300" alt="Data Flow Diagram">
+            </div>
+        </div>
+        
+        <div class="image-container">
+            <div class="image-placeholder">
+                <img src="/api/placeholder/250/300" alt="Architecture Overview">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
 
 ```python
 from googleapiclient.discovery import build
