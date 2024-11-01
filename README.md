@@ -1,3 +1,4 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](LICENSE)
 [![](https://badgen.net/badge/API/Youtube/red?icon=instgrame)]()
 
 
